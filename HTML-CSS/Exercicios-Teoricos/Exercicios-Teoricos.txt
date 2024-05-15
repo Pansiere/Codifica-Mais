@@ -1,0 +1,35 @@
+1. O que são tags semânticas? Por que devemos utilizá-las? Dê exemplos de tags
+semânticas.
+	Resposta:
+		As tags semânticas são elementos HTML, que tem significado espefífico ao conteúdo que elas a envolvem. Devemos utiliza-las para ajudar em futuras manutenções, para melhor entendimendo do código, para melhor compreendimento e colaboração em grupos, e entre outros. Alguns exemplos de tags semânticas são: header, main, 
+		section, footer, body, e entre outros.
+	
+2. O que são elementos inline? Dê exemplos.
+	Resposta:
+		Elementos inline são uma categorização dos elementos do HTML. São exibidos em nível de bloco ou outros elementos inline. E ocupam somente o espaço necessário para o seu conteúdo, e não iniciam uma nova linha qunado são rendenizador no navegador. Alguns exemplos de elementos inline são: "a", "img", "strong", e entre outros.
+
+3. O que são elementos block level? Dê exemplos.
+	Resposta:
+		Os elementos block level ocupam todo espaço do seu elemento pai, que são os containers. Alguns exemplos de elementos block level são: header, main, footer, section, e entre outros.
+
+4. Descreva a utilização do atributo ‘alt’ em imagens no HTML e por que é importante
+utilizar esse atributo.
+	Resposta:
+		O atributo "alt" serve para mostrar oque tal elemento em uma página representa, quando tal objeto não é rendenzado por algum motivo. É muito importante o seu uso, pois ajuda o usuário a saber do que se trata tal elemento que não foi carregado corretamente.
+
+5. Explique o conceito de herança em CSS. Dê exemplo utilizando a propriedade
+‘color’.
+	Resposta:
+		Herança em CSS é o processo pelo qual algumas propriedades de estilo são aplicadas automaticamente de um elemento pai a seus elementos filhos. Isso simplifica o código e garante um estilo consistente.
+
+6. Explique o que é BEM (Block Element Modifier)
+	Resposta:
+		BEM (Block Element Modifier) ​​​​é um método de nomenclatura de classes em CSS, que visa melhorar a organização e clareza do código e facilitar a manutenção e escalabilidade dos projetos.
+7. Explique e dê exemplos a diferença entre medidas absolutas e relativas
+	Resposta:
+		Medidas absolutas oferecem precisão e controle(px, cm, etc), enquanto medidas relativas oferecem flexibilidade e responsividade(%, vw, vh, etc).
+
+8. Explique o que é a unidade de medida Vw (viewport width) e Vh (viewport height) e a
+diferença entre elas.
+	Resposta:
+		As unidades de medida vw (viewport width) e vh (viewport height) são usadas em CSS para dimensionar elementos em relação às dimensões da janela de visualização do navegador. A "vw" dimensiona em relação à largura da viewport, enquanto a "vh" dimensiona em relação à altura da viewport.

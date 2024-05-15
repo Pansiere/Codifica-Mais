@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Habilita o scroll suave */
+}
+
+header {
+    display: flex;
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+    background-color: #ffffff;
+    width: 1400px; /* Define a largura específica para o header */
+    padding: 20px; /* Ajuste o valor conforme necessário para o espaçamento interno */
+    margin: 0 auto; /* Centraliza o header na página */
+    
+}
+
+.header_a {
+    margin-left: auto; /* Empurra a div dos botões para a direita */
+    text-decoration: none;
+    color: #000000;
+    border-bottom-style: none;
+}
+
+
+
+
+
+.header_a_modelos,
+.header_a_sobre {
+    text-decoration: none;
+    color: black;
+    background: none;
+    background-color: #2782eb;
+    border: 6px solid #2782eb;
+    border-radius: 10px;
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    font-size: 22px; /* Define o tamanho da fonte */
+    box-shadow: none; /* Remove a sombra padrão */
+}
+    
+.header_a_sobre:hover,
+.header_a_modelos:hover {
+    background-color: #2e65dd; /* Adiciona um fundo ao passar o mouse */
+}
+
+.header_a_sobre:focus,
+.header_a_planos:focus {
+    outline: none; /* Remove o contorno de foco padrão */
+}
+
+body {
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Roboto Condensed;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.main_titulo{
+    margin-bottom: 3px;
+}
+
+.main_subtitulo,
+.main_titulo{
+    position: relative;
+    background-color: #2782eb;
+    background-clip: content-box;
+    border: 10px solid #2782eb;
+    border-radius: 10px;
+}
+
+.main_imagem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.main_imagem img {
+    max-width: 100%;
+    width: 1400px;
+    height: auto;
+    border: 4px solid black;
+}
+.main_sobre_container{
+    max-width: 100%; 
+    width: 1400px;
+    height: auto; 
+    border: 4px solid black;
+    font-size: 36px;
+}
+
+.main_sobre{
+    position: relative;
+    background-color: #2782eb;
+    background-clip: content-box;
+    border: 10px solid #2782eb;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.main_modelos{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 130px;
+}
+
+.main_titulo_modelos{
+    position: relative;
+    background-color: #2782eb;
+    background-clip: content-box;
+    border: 10px solid #2782eb;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+
+.main_subtitulo,
+.main_titulo{
+    position: relative;
+    background-color: #2782eb;
+    background-clip: content-box;
+    border: 10px solid #2782eb;
+    border-radius: 10px;
+}
+
+
+.main_subtitulo,
+.main_titulo{
+    position: relative;
+    background-color: #2782eb;
+    background-clip: content-box;
+    border: 10px solid #2782eb;
+    border-radius: 10px;
+}
+;
+
+.main_subtitulo,
+.main_titulo{
+    position: relative;
+    background-color: #2782eb;
+    background-clip: content-box;
+    border: 10px solid #2782eb;
+    border-radius: 10px;
+}
+
+
+.main_subtitulo,
+.main_titulo{
+    position: relative;
+    background-color: #2782eb;
+    background-clip: content-box;
+    border: 10px solid #2782eb;
+    border-radius: 10px;
+}
+
+
+.main_subtitulo,
+.main_titulo{
+    position: relative;
+    background-color: #2782eb;
+    background-clip: content-box;
+    border: 10px solid #2782eb;
+    border-radius: 10px;
+}
+
+
+.main_subtitulo,
+.main_titulo{
+    position: relative;
+    background-color: #2782eb;
+    background-clip: content-box;
+    border: 10px solid #2782eb;
+    border-radius: 10px;
+}
+
+
+.main_modelos {
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1400px;
+    margin-bottom: 200px;
+    font-size: 24px;
+}
+
+
+
+.main_modelos_1,
+.main_modelos_2,
+.main_modelos_3{
+    border: 4px solid black;
+    background-color: #2782eb;
+}
+
+.main_modelos_1_6anos,
+.main_modelos_2_10anos,
+.main_modelos_3_esportivas{
+    font-size: 32px;
+    text-decoration: underline;
+}
+
+.main_modelos_preco{
+    font-size: 26px;
+    color: #000000;
+    background-color: #2782eb;
+}
+
+.main_modelos_1_imagem_6anos img,
+.main_modelos_2_imagem_10anos img,
+.main_modelos_3_imagem_esportiva img{
+    max-width: 100%;
+    width: 300px;
+    height: auto;
+    border: 4px solid black;
+}
+
