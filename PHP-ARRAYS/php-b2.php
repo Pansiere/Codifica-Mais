@@ -17,6 +17,5 @@
 
     $valorDaGorgeta = $valorDaConta / 100 * $porcentagemDaGorjeta;
     $totalASePago = $valorDaConta + $valorDaGorgeta;
-
     echo "\nO valor total a ser pago junto com a gorjeta é de: R$$totalASePago,00 ";
 ?>
