@@ -14,6 +14,7 @@
     while($unidadeDeMedida != "f" && $unidadeDeMedida != "c"){
         echo "Para o número fornecido digite 'c' se a unidade de medida é em Celsius, ou 'f' se for em Fahrenheit: ";
         $unidadeDeMedida = trim(fgets(STDIN));
+        $unidadeDeMedida = strtolower($unidadeDeMedida);
     }
     if ($unidadeDeMedida == "c"){
         $fahrenheit = ($temperatura * 9/5) + 32;
