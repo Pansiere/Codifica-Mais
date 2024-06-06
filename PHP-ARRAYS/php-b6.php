@@ -22,7 +22,8 @@
     }
     if ($imc >= 35 && $imc <= 39.9) {
         echo "\nSeu IMC é de $imc.\nEsta em Obesidade II(severa). Mesmo que seus exames aparentem estar normais, é hora de se cuidar, iniciando mudanças no estilo de vida com o acompanhamento próximo de profissionais de saúde.";
-    }else {
+    }
+    if ($imc > 40) {
         echo "\nSeu IMC é de $imc.\nEsta em Obesidade III(mórbida). Aqui o sinal é vermelho, com forte probabilidade de já existirem doenças muito graves associadas. O tratamento deve ser ainda mais urgente.";
     }
 ?>
