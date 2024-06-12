@@ -25,13 +25,9 @@
 
     function venderProduto(&$estoque, $codigo, $quantidade) {
 
-        $produtoEncontrado = false;
-
         foreach($estoque as $key => &$produto) { 
 
             if($produto['codigo'] == $codigo) {
-
-                $produtoEncontrado = true;
 
                 if($quantidade > $produto['quantidade']){
                     
@@ -57,17 +53,13 @@
             }
         } 
 
-        if($produtoEncontrado == false) {
+        echo "\nCódigo do produto inválido, por favor tente novamente.\n";
 
-            echo "\nCódigo do produto inválido, por favor tente novamente.\n";
-        }   
         return;
     }
 
     function verificarEstoque(&$estoque, $codigo) {
         
-        $produtoEncontrado = false;
-
         foreach($estoque as $produto) {
 
             if($produto['codigo'] == $codigo) {
@@ -78,10 +70,8 @@
             }
         }
 
-        if ($produtoEncontrado == false) {
-
-            echo "\nProduto não está disponível.\n";
-        }
+        echo "\nProduto não está disponível.\n";
+        
     }
 
     function listarEstoque(&$estoque) {
