@@ -1,6 +1,8 @@
 <?php
     function calcularSalarioTotal($salarioBase, $horasExtras, $valorHoraExtra){
+       
         $salarioTotal = $salarioBase + ((($salarioBase / 160) * $valorHoraExtra) * $horasExtras);
+       
         return $salarioTotal;
     }
 
@@ -42,5 +44,6 @@
             'horasExtras' => 0
         ]
     ];
-    $listaDosFuncionarios = listarFuncionarios($listaFuncionarios);
+    
+    listarFuncionarios($listaFuncionarios);
 ?>
