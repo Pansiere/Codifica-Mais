@@ -1,4 +1,22 @@
 <?php
+
+/*
+1- Adicionar “estoque” inicial no projeto (abaixo). 
+2- O sistema não pode permitir adicionar um produto com o mesmo código (SKU) e 
+com mesmo nome (Alterar a função adicionarProduto). 
+##########3- Criar uma função para apagar todos os produtos  de uma determinada cor. Ex: 
+Preciso solicitar o usuário para indicar qual cor ele deseja deletar, após apagar  todos 
+os produtos dessa cor. 
+##########4- O sistema precisa listar os produtos do estoque em ordem alfabética (Alterar a 
+função listarEstoque). 
+5- Criar função para indicar o total de itens distintos  que tem disponível no estoque 
+(pode considerar os que estão com quantidade zerada), e a quantidade  total de itens 
+no estoque  (soma de todas as quantidades  de todos os itens) 
+6- Ajustar a função de vender produtos para não deletar o item caso o estoque seja 0. 
+7- Criar uma função para deletar o produto pelo código SKU do produto. Caso o 
+produto tenha estoque, perguntar se a pessoa de fato quer deletar. 
+*/
+
 function exibirMenu()
 {
     echo "\n";
@@ -8,16 +26,17 @@ function exibirMenu()
     echo "3. Verificar Estoque 3\n";
     echo "4. Listar o estoque 4\n";
     echo "5. Limpar o estoque 5\n";
-    echo "6. Sair\n";
+    echo "6. Deletar produto pelo código SKU 6\n";
+    echo "7. Sair\n";
     $opcao = readline("Digite a sua escolha: ");
     return $opcao;
 }
 
-function adicionarProduto(&$estoque, $codigo, $nome, $tamanho, $cor, $quantidade)
+function adicionarProduto(&$estoque, $sku, $nome, $unidade_medida, $quantidade, $preco)
 {
     foreach ($estoque as $key => $produto) {
 
-        if ($codigo == $produto['codigo']) {
+        if ($sku == $produto['sku']) {
 
             echo 'Esté código já pertence a um produto cadastrado no estoque. Por favor tente novamente.';
             return;
@@ -30,19 +49,19 @@ function adicionarProduto(&$estoque, $codigo, $nome, $tamanho, $cor, $quantidade
     }
 
     $estoque[] = [
-        'codigo' => $codigo,
+        'sku' => $sku,
         'nome' => $nome,
-        'tamanho' => $tamanho,
-        'cor' => $cor,
-        'quantidade' => $quantidade
+        'unidade_medida' => $unidade_medida,
+        'quantidade' => $quantidade,
+        'preco' => $preco
     ];
 }
 
-function venderProduto(&$estoque, $codigo, $quantidade)
+function venderProduto(&$estoque, $sku, $quantidade)
 {
     foreach ($estoque as $key => &$produto) {
 
-        if ($produto['codigo'] == $codigo) {
+        if ($produto['sku'] == $sku) {
 
             if ($quantidade > $produto['quantidade']) {
 
@@ -72,11 +91,13 @@ function venderProduto(&$estoque, $codigo, $quantidade)
     return;
 }
 
-function verificarEstoque(&$estoque, $codigo)
+function verificarEstoque(&$estoque)
 {
+    $sku = readline("Digite o SKU do produto para verificar: ");
+
     foreach ($estoque as $produto) {
 
-        if ($produto['codigo'] == $codigo) {
+        if ($produto['sku'] == $sku) {
 
             echo "\nO produto: " . $produto['nome'] . " está disponível." . "\nQuantidade: " . $produto['quantidade'] . ".\n";
             return;
@@ -96,7 +117,7 @@ function listarEstoque(&$estoque)
 
     foreach ($estoque as $produto) {
 
-        echo "\nCódigo: " . $produto['codigo'] . "\nNome: " . $produto['nome'] . "\nTamanho: " . $produto['tamanho'] . "\nCor: " . $produto['cor'] . "\nQuantidade: " . $produto['quantidade'] . "\n\n";
+        echo "\nSKU: " . $produto['sku'] . "\nNome: " . $produto['nome'] . "\nUunidade de Medida: " . $produto['unidade_medida'] . "\nQuantidade: " . $produto['quantidade'] . "\n\n";
     }
 }
 
@@ -112,6 +133,22 @@ function limparEstoque(&$estoque)
     }
 }
 
+function deleterSKU(&$estoque)
+{
+    $sku = readline('Digite o código SKU a ser deletado: ');
+
+    $key = array_search($sku, array_column($estoque, 'sku'));
+
+    if ($key !== false) {
+        $temCerteza = readline("Digite 'sim' se realmete deseja exluir o produto '" . $estoque[$key]['nome'] . '\': ');
+        if ($temCerteza == 'sim') {
+            echo "\nProduto '" . $estoque[$key]['nome'] . "' deletado com sucesso\n";
+            unset($estoque[$key]);
+            return;
+        }
+        echo 'Produto não excluído.';
+    }
+}
 $estoque = [];
 
 while (true) {
@@ -121,23 +158,22 @@ while (true) {
     switch ($opcao) {
         case 1:
             echo "Adicionar um produto\n";
-            $codigo = readline("Digite o Código do produto: ");
+            $sku = readline("Digite o SKU do produto: ");
             $nome = readline("Digite o Nome do produto: ");
-            $tamanho = readline("Digite o Tamanho: ");
-            $cor = readline("Digite a Cor: ");
+            $unidade_medida = readline("Digite a Unidade de Medida: ");
             $quantidade = readline("Digite a Quantidade: ");
-            adicionarProduto($estoque, $codigo, $nome, $tamanho, $cor, $quantidade);
+            $preco = readline("Digite o preço: ");
+            adicionarProduto($estoque, $sku, $nome, $unidade_medida, $quantidade, $preco);
             break;
         case 2:
             echo "Vender um produto\n";
-            $codigo = readline("Digite o código do produto para venda: ");
+            $sku = readline("Digite o código do produto para venda: ");
             $quantidade = readline("Digite a quantidade para venda: ");
-            venderProduto($estoque, $codigo, $quantidade);
+            venderProduto($estoque, $sku, $quantidade);
             break;
         case 3:
             echo "Verificar estoque\n";
-            $codigo = readline("Digite o códgigo do produto para verificar: ");
-            verificarEstoque($estoque, $codigo);
+            verificarEstoque($estoque);
             break;
         case 4:
             echo "Listar o estoque\n";
@@ -148,6 +184,10 @@ while (true) {
             limparEstoque($estoque);
             break;
         case 6:
+            echo "Deletar produto pelo código SKU 6\n";
+            deleterSKU($estoque);
+            break;
+        case 7:
             echo "Saindo...\n";
             exit;
         default:
