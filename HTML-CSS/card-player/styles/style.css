@@ -1,0 +1,104 @@
+:root {
+  --cor-primaria: #ffffff;
+  --cor-secundaria: #423e3e;
+  --cor-terciaria: #0b9c1f;
+  --font-secundaria: "Montserrat", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background-color: var(--cor-secundaria);
+  display: flex;
+  justify-content: center;
+}
+
+.player {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: auto;
+  border-radius: 5%;
+  width: 30rem;
+  height: 16rem;
+  overflow: hidden;
+}
+
+.musica {
+  display: flex;
+  flex-direction: row;
+  padding: 8%;
+  gap: 8px;
+}
+
+.capa {
+  width: 20%;
+  border: 2px solid black;
+  border-radius: 5%;
+}
+
+.informacoes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.linha-1 {
+  color: rgb(31, 97, 240);
+  font-weight: 700;
+}
+.linha-2 {
+  color: #949494;
+  font-weight: 700;
+}
+
+.linha-3 {
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+}
+
+.tempo {
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-bottom: 4%;
+}
+
+.barra {
+  width: 100%;
+  display: flex;
+  height: 0.8rem;
+  flex-direction: row;
+  border-radius: 0.2rem;
+  overflow: hidden;
+}
+
+.progresso {
+  background-color: rgb(31, 97, 240);
+  flex-grow: 2;
+  flex-shrink: 1;
+  flex-basis: 0%;
+}
+
+.vazio {
+  background-color: #949494;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+}
+.tempo-baixo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.baixo {
+  background-color: #949494;
+  display: flex;
+  justify-content: space-around;
+  padding: 3%;
+  align-items: center;
+}
