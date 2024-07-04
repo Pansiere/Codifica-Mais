@@ -13,6 +13,6 @@ CREATE TABLE produtos (
     fabricante VARCHAR(50),
     fornecedor VARCHAR(50),
     deleted_at DATE,
-    create_at DATE,
+    create_at NOW(),
     update_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )
