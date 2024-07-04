@@ -12,7 +12,7 @@ CREATE TABLE produtos (
     quantidade_estoque INT,
     fabricante VARCHAR(50),
     fornecedor VARCHAR(50),
-    deleted_at DATE,
-    create_at NOW(),
+    deleted_at TIMESTAMP DEFAULT NULL,
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     update_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )
