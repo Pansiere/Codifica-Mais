@@ -1,5 +1,7 @@
 CREATE DATABASE gestao_produtos;
+
 USE gestao_produtos;
+
 CREATE TABLE produtos (
     id INT auto_increment NOT NULL primary key,
     nome VARCHAR(50) NOT NULL,
@@ -15,4 +17,4 @@ CREATE TABLE produtos (
     deleted_at TIMESTAMP DEFAULT NULL,
     create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     update_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-)
+);
