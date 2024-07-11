@@ -4,7 +4,7 @@ INSERT INTO `gestao_produtos`.`categorias`(`nome_categoria`, `created_at`, `upda
 VALUES ('blusa', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO `gestao_produtos`.`unidades_medidas`(`nome_unidade_medida`, `created_at`, `updated_at`)
-VALUES ('ml', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+VALUES ('M', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO `gestao_produtos`.`fabricantes`(`nome_fabricante`, `created_at`, `updated_at`)
 VALUES ('FrabicaTal', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
