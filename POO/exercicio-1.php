@@ -16,13 +16,19 @@ class Carro
 
     public function acelerar(): string
     {
-        $this->$acelerando = true;
-        return 'Acelerando o carro.'
+        $this->acelerando = true;
+        return 'Acelerando o carro.';
     }
 
     public function frear(): string
     {
-        $this->$acelerando = false;
-        return 'Freando o carro.'
+        $this->acelerando = false;
+        return 'Freando o carro.';
     }
 }
+
+$conduzindoCarro = new Carro('BMW', 'Z11', 2024);
+
+echo $conduzindoCarro->acelerar() . PHP_EOL;
+
+echo $conduzindoCarro->frear() . PHP_EOL;
