@@ -1,12 +1,10 @@
 <?php
-require_once '1 - Sistema de Gerenciamento de Contas Bancárias.php';
+require_once '2 - Sistema de Gerenciamento de Produtos.php';
 
-$ContaBancaria = new ContaBancaria(3423412, 'Joao Pedro Vicente Pansiere');
+$camisaPolo = new Produto('Camisa Polo', 90);
 
-$ContaBancaria->depositar(30);
-echo PHP_EOL;
-$ContaBancaria->sacar(10);
-echo PHP_EOL;
-echo $ContaBancaria->exibirSaldo();
-echo PHP_EOL;
-$ContaBancaria->sacar(150);
+$camisaPolo->alterarPreco(95.5);
+echo "\n\n";
+$camisaPolo->ajustarEstoque(100);
+echo "\n\n";
+$camisaPolo->exibirDetalhes();

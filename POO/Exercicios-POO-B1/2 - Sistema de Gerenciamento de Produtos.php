@@ -1,54 +1,59 @@
 <?php
 /*
-Exercício 1: Sistema de Gerenciamento de Contas Bancárias
+Exercício 2:
+    Sistema de Gerenciamento de Produtos
 Descrição:
-    Crie uma classe ContaBancaria que represente uma conta bancária. A
-    classe deve ter os seguintes atributos privados: número da conta, nome do titular, saldo.
-    Deve haver métodos públicos para depositar e sacar dinheiro, além de um método para
-    exibir o saldo atual.
+    Crie uma classe Produto que represente um produto em uma loja. A classe
+    deve ter os seguintes atributos privados: nome, preço, quantidade em estoque. Deve
+    haver métodos públicos para alterar o preço, ajustar a quantidade em estoque e exibir os
+    detalhes do produto.
 Instruções:
-    1 - Defina a classe ContaBancaria com os atributos privados.
-    2 - Crie métodos depositar($quantia), sacar($quantia) e exibirSaldo().
-    3 - Garanta que o saldo não fique negativo.
-    4 - Crie um objeto ContaBancaria, realize operações de depósito e saque, e exiba o saldo.
+    1. Defina a classe Produto com os atributos privados.
+    2. Crie métodos alterarPreco($novoPreco), ajustarEstoque($quantidade) e
+    exibirDetalhes().
+    3. Crie um objeto Produto, altere o preço e a quantidade em estoque, e exiba os
+    detalhes.
 */
 
-class ContaBancaria
+class Produto
 {
-    private int $numeroDaConta;
-    private string $nomeDoTitular;
-    private float $saldo;
+    private string $nome;
+    private float $preco;
+    private int $quantidadeEmEstoque;
 
-    function __construct(int $numeroDaConta, string $nomeDoTitular)
+    function __construct(string $nome, float $preco)
     {
-        $this->numeroDaConta = $numeroDaConta;
-        $this->nomeDoTitular = $nomeDoTitular;
-        $this->saldo = 0;
+        $this->nome = $nome;
+        $this->preco = $preco;
+        $this->quantidadeEmEstoque = 0;
     }
 
-    public function depositar(float $quantia): void
+    public function alterarPreco(float $novoPreco): void
     {
-        if ($quantia < 0) {
-            echo "Valor precisa ser positivo";
-            return;
-        }
-        $this->saldo += $quantia;
-        echo "Depósito realizado com sucesso\nValor do depósito: R$$quantia\nTitular: $this->nomeDoTitular\nNúmero da conta: {$this->numeroDaConta}\n";
+        echo "Alterando o preço do produto\n";
+        echo "Valor anterior: R$$this->preco\n";
+        echo "Valot atual: R$$novoPreco";
+        $this->preco = $novoPreco;
+
+        return;
     }
 
-    public function sacar(float $quantia): void
+    public function ajustarEstoque($quantidade): void
     {
-        if ($quantia > $this->saldo) {
-            echo "Saldo indisponível";
-            return;
-        }
+        $this->quantidadeEmEstoque = $quantidade;
 
-        $this->saldo -= $quantia;
-        echo "Saque realizado com sucesso\nValor do saque: R$$quantia\nTitular: $this->nomeDoTitular\nNúmero da conta: {$this->numeroDaConta}\n";
+        echo "Estoque ajustado com sucesso";
+
+        return;
     }
 
-    public function exibirSaldo(): string
+    public function exibirDetalhes(): void
     {
-        return "Saldo: R$$this->saldo\nTitular: $this->nomeDoTitular\nNúmero da conta: {$this->numeroDaConta}\n";
+        echo "Detalhes do produto\n";
+        echo "Nome: $this->nome\n";
+        echo "Preço: R$$this->preco\n";
+        echo "Quantidade em estoque: $this->quantidadeEmEstoque";
+
+        return;
     }
 }
