@@ -5,8 +5,8 @@ abstract class Produto implements ProdutoInterface
     public function __construct(
         public string $sku,
         public string $nome,
-        public int $quantidade,
         public string $unidadeDeMedida,
+        public int $quantidade,
         public float $preco
     ) {
     }
