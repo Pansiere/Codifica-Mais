@@ -18,3 +18,5 @@ class ProdutoPerecivel extends Produto
         return $this->validade;
     }
 }
+
+// sobreescrito = poliformismo? gogo

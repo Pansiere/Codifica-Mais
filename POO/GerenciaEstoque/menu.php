@@ -24,14 +24,13 @@ while (true) {
 
     switch ($opcao) {
         case 1:
-            echo "Adicionar um produto\n";
-
+            $estoque->adicionar();
             break;
         case 2:
             echo "Vender um produto\n";
             break;
         case 3:
-            echo "Verificar Estoque\n";
+            echo "Atualizar Estoque\n";
             break;
         case 4:
             echo "Listar o Estoque\n";
