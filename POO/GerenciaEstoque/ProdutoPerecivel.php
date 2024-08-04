@@ -8,15 +8,13 @@ class ProdutoPerecivel extends Produto
         public string $unidadeDeMedida,
         public int $quantidade,
         public float $preco,
-        public string $validade //propriedade específica
+        public string $validade
     ) {
         parent::__construct($sku, $nome, $unidadeDeMedida, $quantidade, $preco);
     }
 
-    public function getValidade(): string //propriedade específica
+    public function getValidade(): string
     {
         return $this->validade;
     }
 }
-
-// sobreescrito = poliformismo? gogo

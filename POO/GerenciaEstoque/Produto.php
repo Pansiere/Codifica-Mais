@@ -30,4 +30,8 @@ abstract class Produto implements ProdutoInterface
     {
         return $this->preco;
     }
+    public function setQuantidade($quantidade): void
+    {
+        $this->quantidade = $quantidade;
+    }
 }

@@ -7,4 +7,5 @@ interface ProdutoInterface
     public function getQuantidade(): int;
     public function getUnidadeDeMedida(): string;
     public function getPreco(): float;
+    public function setQuantidade($quantidade): void;
 }

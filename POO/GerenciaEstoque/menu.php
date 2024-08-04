@@ -9,10 +9,12 @@ function exibirMenu()
     echo "Escolha uma das opções abaixo:\n";
     echo "1. Adicionar um produto 1\n";
     echo "2. Vender um produto 2\n";
-    echo "3. Verificar Estoque 3\n";
+    echo "3. Atualizar produto 3\n";
     echo "4. Listar o Estoque 4\n";
-    echo "5. Sair\n";
+    echo "5. Deletar um produto 5\n";
+    echo "6. Sair\n";
     $opcao = readline("Digite a sua escolha: ");
+    echo PHP_EOL;
     return $opcao;
 }
 
@@ -24,18 +26,26 @@ while (true) {
 
     switch ($opcao) {
         case 1:
+            echo "Adicionando um produto... para o tipo:\n";
             $estoque->adicionar();
             break;
         case 2:
-            echo "Vender um produto\n";
+            echo "Vendendo um produto...\n";
+            $estoque->vender();
             break;
         case 3:
-            echo "Atualizar Estoque\n";
+            echo "Atualizando um produto...\n";
+            $estoque->atualizar();
             break;
         case 4:
-            echo "Listar o Estoque\n";
+            echo "Listando o estoque...\n";
+            $estoque->listar();
             break;
         case 5:
+            echo "Deletando um produto...\n";
+            $estoque->deletar();
+            break;
+        case 6:
             echo "Saindo...\n";
             exit;
         default:
@@ -43,90 +53,3 @@ while (true) {
             break;
     }
 };
-
-/*
-function adicionarProduto(&$estoque, $codigo, $nome, $tamanho, $cor, $quantidade)
-{
-
-    $estoque[] = [
-        'codigo' => $codigo,
-        'nome' => $nome,
-        'tamanho' => $tamanho,
-        'cor' => $cor,
-        'quantidade' => $quantidade
-    ];
-}
-
-function venderProduto(&$estoque, $codigo, $quantidade)
-{
-
-    foreach ($estoque as $key => &$produto) {
-
-        if ($produto['codigo'] == $codigo) {
-
-            if ($quantidade > $produto['quantidade']) {
-
-                echo "\nVenda de " . $produto['nome'] . " não realizada.\nExiste apenas " .  $produto['quantidade'] . " unidades disponiveis.\n";
-
-                return;
-            }
-
-            $produto['quantidade'] -= $quantidade;
-
-            if ($produto['quantidade'] == 0) {
-
-                echo "\nVenda de " . $quantidade . " " . $produto['nome'] . " realizada com sucesso.";
-                echo "\nProduto: " . $produto['nome'] . " esgotado.\n";
-                unset($estoque[$key]);
-            } else {
-
-                echo "\nVenda de " . $quantidade . " " . $produto['nome'] . " realizada com sucesso.\n";
-                echo "Quantidade restante: " . $produto['quantidade'] . "\n";
-            }
-            return;
-        }
-    }
-
-    echo "\nCódigo do produto inválido, por favor tente novamente.\n";
-
-    return;
-}
-
-function verificarEstoque(&$estoque, $codigo)
-{
-
-    foreach ($estoque as $produto) {
-
-        if ($produto['codigo'] == $codigo) {
-
-            echo "\nO produto: " . $produto['nome'] . " está disponível." . "\nQuantidade: " . $produto['quantidade'] . ".\n";
-            $produtoEncontrado = true;
-            return;
-        }
-    }
-
-    echo "\nProduto não está disponível.\n";
-}
-
-function listarEstoque(&$estoque)
-{
-
-    if (empty($estoque)) {
-        echo "Estoque vazio!\n";
-        return;
-    }
-
-    foreach ($estoque as $produto) {
-
-        echo "\nCódigo: " . $produto['codigo'] . "\nNome: " . $produto['nome'] . "\nTamanho: " . $produto['tamanho'] . "\nCor: " . $produto['cor'] . "\nQuantidade: " . $produto['quantidade'] . "\n\n";
-    }
-}
-
-$estoque[] = [
-    'codigo' => 1,
-    'nome' => 'Camisa Polo',
-    'tamanho' => 'P',
-    'cor' => 'Branca',
-    'quantidade' => 5
-];
-*/
