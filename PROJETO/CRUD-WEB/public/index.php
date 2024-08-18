@@ -42,7 +42,30 @@ $_SESSION['produtos'] = [
         'quantidade' => 5,
         'categoria_id' => '2',
     ],
+    [
+        'id' => 1,
+        'nome' => 'Geladeira',
+        'sku' => '123457',
+        'unidade_medida_id' => '2',
+        'valor' => 2500.00,
+        'quantidade' => 5,
+        'categoria_id' => '2',
+    ],
+    [
+        'id' => 2,
+        'nome' => 'Fogão',
+        'sku' => '123457',
+        'unidade_medida_id' => '2',
+        'valor' => 2500.00,
+        'quantidade' => 5,
+        'categoria_id' => '2',
+    ],
 ];
+foreach ($_SESSION['produtos'] as $key => $value) {
+    echo $value['id'];
+    echo $_SESSION['categorias'][$value['id']];
+}
+echo $_SESSION['categorias']['1'];
 
 // Redireciona para a página de listagem
 header('Location: listagem.php');

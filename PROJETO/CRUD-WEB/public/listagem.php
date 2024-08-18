@@ -1,7 +1,4 @@
-<?php
-session_start();
-
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,59 +12,53 @@ session_start();
 
 <body>
 
-    <div class="corpo">
+    <section class="corpo">
+
         <div class="botoes">
             <div class="botoes_novo_item">
-                <p>Novo Item</p>
+                <form action="formulario.php" method="get" class="botoes_action_novo_item">
+                    <button type="submit">Novo item</button>
+                </form>
             </div>
+
             <div class="botoes_buscar_item">
                 <p>Buscar item</p>
                 <div class="barra-buscador">
-                    <input type="text" id="busca" placeholder="Digite sua busca...">
-                    <button onclick="realizarBusca()">Buscar</button>
+                    <form action="busca.php" method="POST">
+                        <input type="text" name="busca">
+                    </form>
                 </div>
             </div>
         </div>
 
-        <div class="produto">
+        <?php foreach ($_SESSION['produtos'] as $key => $value) : ?>
+            <div class="produto">
 
-            <div class="produto_linha_1">
-                <div class="produto_linha_1_categoria">
-                    <div class="produto_linha_1_categoria_categoria_e_id">
-                        <p>#00001</p>
-                        <p class="categoria_vestuario">vestuário</p>
+                <div class="produto_linha_1">
+                    <div class="produto_linha_1_categoria">
+
+                        <div class="produto_linha_1_categoria_categoria_e_id">
+                            <p class="id">#<?= $value['id'] ?></p>
+                            <p class="<?= $_SESSION['categorias'][$value['id']] ?>"><?= $_SESSION['categorias'][$value['id']] ?></p>
+                        </div>
+                        <p class="sku">SKU: <?= $value['sku'] ?></p>
                     </div>
-                    <p>SKU: 123456</p>
+
+
+                    <div class="produto_linha_2">
+                        <p class="produto_linha_2_espacamento"><?= $value['nome'] ?></p>
+                        <p>Quantidade: <?= $value['quantidade'] ?></p>
+                    </div>
+                    <div class="produto_linha_3">
+                        <form action="editar.php" method="get" class="editar">
+                            <button type="submit">Editar</button>
+                        </form>
+                        <P class="deletar">Deletar</P>
+                    </div>
                 </div>
             </div>
-
-            <div class="produto_linha_2">
-                <p class="produto_linha_2_espacamento">Camisa codifica+</p>
-                <p>Quantidade: 100</p>
-            </div>
-            <div class="produto_linha_3">
-                <p class="editar">Editar</p>
-                <P class="deletar">Deletar</P>
-            </div>
-        </div>
-    </div>
-
-</body>
-
-</html>
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barra de Busca</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-
+        <?php endforeach; ?>
+    </section>
 </body>
 
 </html>
