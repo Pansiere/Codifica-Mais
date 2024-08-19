@@ -38,20 +38,22 @@ body {
 }
 
 .botoes_novo_item button {
-  border: none; /* Remove a borda padrão do botão */
-  background-color: transparent; /* Torna o fundo do botão transparente, se desejar */
-  color: #000000c9; /* Cor do texto do botão, ajuste conforme necessário */
-  cursor: pointer; /* Altera o cursor para indicar que é clicável */
-  padding: 0; /* Remove o padding padrão, ajuste conforme necessário */
-  font: inherit; /* Mantém a fonte herdada do elemento pai */
+  border: none;
+  background-color: transparent;
+  color: #000000c9;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
 }
 
 .produto {
+  display: flex;
   margin: 2vh;
   background-color: rgba(0, 0, 0, 0.027);
   border: 2px solid black;
   border-radius: 10px;
   padding: 4px;
+  justify-content: space-between;
 }
 
 .produto_linha_1_categoria {
@@ -72,10 +74,6 @@ body {
 
 .id {
   color: rgba(0, 0, 0, 0.363);
-}
-
-.sku {
-  padding-right: 16vh;
 }
 
 .Eletrônicos {
@@ -120,24 +118,55 @@ body {
   border-color: rgba(77, 66, 66, 0.951);
   border-radius: 5px;
   padding: 4px;
-  padding-right: 4vh;
-  padding-left: 4vh;
 }
 
 .editar button {
-  border: none; /* Remove a borda padrão do botão */
-  background-color: transparent; /* Torna o fundo do botão transparente, se desejar */
-  color: #000000c9; /* Cor do texto do botão, ajuste conforme necessário */
-  cursor: pointer; /* Altera o cursor para indicar que é clicável */
-  padding: 0; /* Remove o padding padrão, ajuste conforme necessário */
-  font: inherit; /* Mantém a fonte herdada do elemento pai */
+  border: none;
+  background-color: transparent;
+  color: #000000c9;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
 }
 
 .deletar {
+  display: inline-block;
   background-color: rgba(255, 0, 0, 0.29);
   border: 2px solid black;
   border-color: rgb(255, 0, 0);
   color: rgb(255, 0, 0);
   border-radius: 5px;
   padding: 4px;
+  cursor: pointer;
+}
+
+.deletar button {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+.deletar {
+  margin: 0;
+}
+
+.infos_lado_direito {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 50%;
+}
+
+.infos_lado_esquerdo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: end;
+  width: 50%;
+}
+
+.primeira_linha {
+  display: flex;
 }

@@ -61,11 +61,6 @@ $_SESSION['produtos'] = [
         'categoria_id' => '2',
     ],
 ];
-foreach ($_SESSION['produtos'] as $key => $value) {
-    echo $value['id'];
-    echo $_SESSION['categorias'][$value['id']];
-}
-echo $_SESSION['categorias']['1'];
 
 // Redireciona para a página de listagem
 header('Location: listagem.php');

@@ -34,6 +34,36 @@
         <?php foreach ($_SESSION['produtos'] as $key => $value) : ?>
             <div class="produto">
 
+                <div class="infos_lado_direito">
+                    <div class="primeira_linha">
+                        <p class="id">#<?= $value['id'] ?></p>
+                        <p class="<?= $_SESSION['categorias'][$value['id']] ?>"><?= $_SESSION['categorias'][$value['id']] ?></p>
+                    </div>
+                    <p><?= $value['nome'] ?></p>
+
+                    <form action="editar.php" method="get" class="editar">
+                        <button type="submit">Editar</button>
+                    </form>
+                </div>
+
+                <div class="infos_lado_esquerdo">
+                    <p class="sku">SKU: <?= $value['sku'] ?></p>
+                    <p>Quantidade: <?= $value['quantidade'] ?></p>
+                    <div class="deletar">
+                        <form action="deletar.php" method="post">
+                            <input type="hidden" name="id" value="<?= $value['id'] ?>">
+                            <button type="submit">Deletar</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        <?php endforeach; ?>
+    </section>
+</body>
+
+
+<!-- 
                 <div class="produto_linha_1">
                     <div class="produto_linha_1_categoria">
 
@@ -55,10 +85,6 @@
                         </form>
                         <P class="deletar">Deletar</P>
                     </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    </section>
-</body>
+                </div> -->
 
 </html>
