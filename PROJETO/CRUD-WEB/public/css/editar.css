@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  font-family: Roboto Condensed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.corpo {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.027);
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 3%;
+  gap: 20px;
+}
+
+.nome_do_item {
+  display: flex;
+  flex-direction: column;
+}
+
+.sku_e_udm {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
+
+.valor_e_quantidade {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
