@@ -62,29 +62,4 @@
     </section>
 </body>
 
-
-<!-- 
-                <div class="produto_linha_1">
-                    <div class="produto_linha_1_categoria">
-
-                        <div class="produto_linha_1_categoria_categoria_e_id">
-                            <p class="id">#<?= $value['id'] ?></p>
-                            <p class="<?= $_SESSION['categorias'][$value['id']] ?>"><?= $_SESSION['categorias'][$value['id']] ?></p>
-                        </div>
-                        <p class="sku">SKU: <?= $value['sku'] ?></p>
-                    </div>
-
-
-                    <div class="produto_linha_2">
-                        <p class="produto_linha_2_espacamento"><?= $value['nome'] ?></p>
-                        <p>Quantidade: <?= $value['quantidade'] ?></p>
-                    </div>
-                    <div class="produto_linha_3">
-                        <form action="editar.php" method="get" class="editar">
-                            <button type="submit">Editar</button>
-                        </form>
-                        <P class="deletar">Deletar</P>
-                    </div>
-                </div> -->
-
 </html>
