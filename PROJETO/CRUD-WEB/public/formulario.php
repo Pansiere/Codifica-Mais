@@ -1,4 +1,26 @@
-<?php session_start(); ?>
+<?php
+
+session_start();
+
+if (isset($_POST['nome'])) {
+
+    $_SESSION['produtos'][] = [
+        'id' => 3,
+        'nome' => $_POST['nome'],
+        'sku' => $_POST['sku'],
+        'udm' => $_POST['udm'],
+        'valor' => $_POST['valor'],
+        'quantidade' => $_POST['quantidade'],
+        'categoria_id' => $_POST['categoria'],
+    ];
+
+    var_dump($_SESSION['produtos']);
+
+    // header('Location: listagem.php');
+    // exit();
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -6,7 +28,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/editar.css" />
+    <link rel="stylesheet" href="./css/formulario.css" />
     <title>Formulário</title>
 </head>
 
@@ -16,7 +38,7 @@
 
         <h1>Novo Item</h1>
 
-        <form class="forma" action="index.php" method="post">
+        <form class="forma" action="#" method="post">
 
             <div class="nome_do_item">
                 <p>Nome do item</p>
@@ -46,7 +68,7 @@
                 </div>
 
                 <div class="quantidade">
-                    <p>Quantidade Estoque</p>
+                    <p>Quantidade</p>
 
                     <input type="text" id="quantidade" name="quantidade" required>
                 </div>
@@ -54,7 +76,7 @@
 
             <div class="categoria">
                 <label for="categoria">Categoria</label>
-                <select id="categoria" name="categoria" required>
+                <select name="categoria" required>
                     <option value="eletronicos">Eletrônicos</option>
                     <option value="eletrodomesticos">Eletrodomésticos</option>
                     <option value="moveis">Móveis</option>
@@ -76,3 +98,9 @@
 </body>
 
 </html>
+
+<?php
+
+var_dump($_POST);
+
+?>

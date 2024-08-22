@@ -64,7 +64,7 @@
                 </select>
             </div>
 
-            <div class="botao-cadastrar">
+            <div class="botao-editar">
                 <input class="input-botao-cadastrar" type="submit" name="editar" value="Editar item" />
             </div>
 

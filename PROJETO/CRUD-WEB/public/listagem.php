@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/listagem.css" />
     <title>Listagem de produtos</title>
 </head>
 
@@ -41,7 +41,7 @@
 
                     <form action="busca.php" method="POST">
 
-                        <input type="text" name="busca">
+                        <input type="text" id="busca" name="busca">
 
                     </form>
 
@@ -58,7 +58,7 @@
 
                     <div class="primeira_linha">
 
-                        <p class="id">#<?= $value['id'] ?></p>
+                        <p class="id">#00000<?= $value['id'] ?></p>
 
                         <p class="<?= $_SESSION['categorias'][$value['id']] ?>"><?= $_SESSION['categorias'][$value['id']] ?></p>
 

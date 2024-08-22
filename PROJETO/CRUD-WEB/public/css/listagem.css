@@ -11,6 +11,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .corpo {
@@ -52,7 +53,7 @@ body {
   background-color: rgba(0, 0, 0, 0.027);
   border: 2px solid black;
   border-radius: 10px;
-  padding: 4px;
+  padding: 8px;
   justify-content: space-between;
 }
 
@@ -95,6 +96,7 @@ body {
   background-color: rgba(174, 0, 255, 0.301);
   color: rgb(174, 0, 255);
   padding-left: 1vh;
+  padding-right: 1vh;
 }
 .produto_linha_2 {
   display: flex;
@@ -129,6 +131,12 @@ body {
   font: inherit;
 }
 
+#busca {
+  border-radius: 10px;
+  padding: 5px;
+  border: 1px solid black;
+}
+
 .deletar {
   display: inline-block;
   background-color: rgba(255, 0, 0, 0.29);
@@ -157,6 +165,7 @@ body {
   flex-direction: column;
   align-items: start;
   width: 50%;
+  gap: 10px;
 }
 
 .infos_lado_esquerdo {
@@ -165,6 +174,7 @@ body {
   justify-content: space-around;
   align-items: end;
   width: 50%;
+  gap: 10px;
 }
 
 .primeira_linha {
