@@ -1,13 +1,23 @@
-<?php session_start(); ?>
+<?php
+
+session_start();
+
+if (isset($_POST["deletar"])) {
+
+    unset($_SESSION['produtos'][$_POST['deletar']]);
+}
+
+function listavazia()
+{
+    if (empty($_SESSION['produtos'])) {
+
+        echo "Sem produtos no estoque.";
+    }
+}
+
+?>
 
 <!DOCTYPE html>
-
-<!-- 
-    Essa página exibe a lista de produtos cadastrados. Os dados são
-    extraídos da sessão e apresentados ao usuário. Se não houver
-    produtos cadastrados, uma mensagem apropriada será exibida.
--->
-
 <html lang="pt-br">
 
 <head>
@@ -51,22 +61,31 @@
 
         </div>
 
+        <p class="msg_estoque_vazio"> <?= listavazia() ?> </p>
+
         <?php foreach ($_SESSION['produtos'] as $key => $value) : ?>
+
             <div class="produto">
 
                 <div class="infos_lado_direito">
 
                     <div class="primeira_linha">
 
-                        <p class="id">#00000<?= $value['id'] ?></p>
+                        <p class="id">#00000<?= $key + 1 ?></p>
 
-                        <p class="<?= $_SESSION['categorias'][$value['id']] ?>"><?= $_SESSION['categorias'][$value['id']] ?></p>
+                        <div class="categoria<?= $value['categoria_id'] ?>">
+
+                            <?= $_SESSION['categorias'][$value['categoria_id']] ?>
+
+                        </div>
 
                     </div>
 
                     <p><?= $value['nome'] ?></p>
 
-                    <form action="editar.php" method="get" class="editar">
+                    <form action="editar.php" method="post" class="editar">
+
+                        <input type="hidden" name="key" value="<?= $key ?>">
 
                         <button type="submit">Editar</button>
 
@@ -82,9 +101,9 @@
 
                     <div class="deletar">
 
-                        <form action="deletar.php" method="post">
+                        <form action="#" method="post">
 
-                            <input type="hidden" name="id" value="<?= $value['id'] ?>">
+                            <input type="hidden" name="deletar" value="<?= $key ?>">
 
                             <button type="submit">Deletar</button>
 
@@ -96,7 +115,6 @@
 
             </div>
         <?php endforeach; ?>
-
     </div>
 </body>
 

@@ -14,10 +14,8 @@ if (isset($_POST['nome'])) {
         'categoria_id' => $_POST['categoria'],
     ];
 
-    var_dump($_SESSION['produtos']);
-
-    // header('Location: listagem.php');
-    // exit();
+    header('Location: listagem.php');
+    exit();
 }
 
 ?>
@@ -77,12 +75,12 @@ if (isset($_POST['nome'])) {
             <div class="categoria">
                 <label for="categoria">Categoria</label>
                 <select name="categoria" required>
-                    <option value="eletronicos">Eletrônicos</option>
-                    <option value="eletrodomesticos">Eletrodomésticos</option>
-                    <option value="moveis">Móveis</option>
-                    <option value="decoaracao">Decoraação</option>
-                    <option value="vestuario">Vestuário</option>
-                    <option value="outros">Outros</option>
+                    <option value="1">Eletrônicos</option>
+                    <option value="2">Eletrodomésticos</option>
+                    <option value="3">Móveis</option>
+                    <option value="4">Decoração</option>
+                    <option value="5">Vestuário</option>
+                    <option value="6">Outros</option>
                 </select>
             </div>
 
@@ -98,9 +96,3 @@ if (isset($_POST['nome'])) {
 </body>
 
 </html>
-
-<?php
-
-var_dump($_POST);
-
-?>

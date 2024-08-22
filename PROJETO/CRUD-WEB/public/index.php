@@ -9,7 +9,7 @@ $_SESSION['categorias'] = [
     '3' => 'Móveis',
     '4' => 'Decoração',
     '5' => 'Vestuário',
-    '7' => 'Outros'
+    '6' => 'Outros'
 ];
 
 $_SESSION['unidades_medidas'] = [
