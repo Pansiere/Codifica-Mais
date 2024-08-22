@@ -16,74 +16,73 @@ body {
 .corpo {
   display: flex;
   flex-direction: column;
-  align-items: center;
   background-color: rgba(0, 0, 0, 0.027);
   border: 2px solid black;
   border-radius: 10px;
   padding: 3%;
-}
-
-.container-form {
-  display: flex;
-  align-items: center;
-}
-
-.ct {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 20px;
 }
 
 .nome_do_item {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 2%;
+  gap: 4px;
+}
+
+.forma {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .sku_e_udm {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 2%;
+  gap: 20px;
 }
 
 .sku {
   display: flex;
   flex-direction: column;
-  margin-right: 3%;
-  margin-left: 3%;
+  gap: 4px;
 }
 
 .udm {
   display: flex;
   flex-direction: column;
-  margin-right: 3%;
-  margin-left: 3%;
+  gap: 4px;
 }
+
 .valor_e_quantidade {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 3%;
+  gap: 20px;
 }
 
 .valor {
   display: flex;
   flex-direction: column;
-  margin-right: 3%;
-  margin-left: 3%;
+  gap: 4px;
 }
 
 .quantidade {
   display: flex;
   flex-direction: column;
-  margin-right: 3%;
-  margin-left: 3%;
+  gap: 4px;
 }
 
 .categoria {
-  margin-bottom: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 45%;
+}
+
+.input-botao-cadastrar {
+  color: rgb(25, 78, 224);
+  font-size: medium;
+  background-color: none;
+  border: 1px solid rgb(25, 78, 224);
+  border-radius: 10px;
+  padding: 4px;
 }

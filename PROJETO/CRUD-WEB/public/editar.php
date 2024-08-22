@@ -1,7 +1,4 @@
-<?php
-session_start();
-
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -68,7 +65,7 @@ session_start();
             </div>
 
             <div class="botao-cadastrar">
-                <input class="input-botao-cadastrar" type="submit" name="editar" value="Criar item" />
+                <input class="input-botao-cadastrar" type="submit" name="editar" value="Editar item" />
             </div>
 
         </form>

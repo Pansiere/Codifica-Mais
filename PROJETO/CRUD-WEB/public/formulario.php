@@ -6,72 +6,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/formulario.css" />
-    <title>Listagem de produtos</title>
+    <link rel="stylesheet" href="./css/editar.css" />
+    <title>Formulário</title>
 </head>
 
 <body>
-    <section class="corpo">
 
-        <h2>Novo item</h2>
+    <div class="corpo">
 
-        <section class="container-form">
-            <form class="ct" action="#" method="post">
+        <h1>Novo Item</h1>
 
-                <div class="nome_do_item">
-                    <p>Nome do item</p>
-                    <input type="text" id="nome" name="nome" required>
+        <form class="forma" action="index.php" method="post">
+
+            <div class="nome_do_item">
+                <p>Nome do item</p>
+
+                <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div class="sku_e_udm">
+                <div class="sku">
+                    <p>SKU</p>
+
+                    <input type="text" id="sku" name="sku" required>
                 </div>
 
-                <div class="sku_e_udm">
-                    <div class="sku">
-                        <p>SKU</p>
+                <div class="udm">
+                    <p>Unidade de Medida</p>
 
-                        <input type="text" id="sku" name="sku" required>
-                    </div>
+                    <input type="text" id="udm" name="udm" required>
+                </div>
+            </div>
 
-                    <div class="udm">
-                        <p>Unidade de medida</p>
+            <div class="valor_e_quantidade">
+                <div class="valor">
+                    <p>Valor</p>
 
-                        <input type="text" id="udm" name="udm" required>
-                    </div>
-
+                    <input type="text" id="valor" name="valor" required>
                 </div>
 
+                <div class="quantidade">
+                    <p>Quantidade Estoque</p>
 
-                <div class="valor_e_quantidade">
-                    <div class="valor">
-                        <label for="valor">Valor</label>
-                        <input type="text" id="valor" name="valor" required>
-                    </div>
-
-                    <div class="quantidade">
-                        <label for="quantidade">Quantidade</label>
-                        <input type="text" id="quantidade" name="quantidade" required>
-                    </div>
+                    <input type="text" id="quantidade" name="quantidade" required>
                 </div>
+            </div>
+
+            <div class="categoria">
+                <label for="categoria">Categoria</label>
+                <select id="categoria" name="categoria" required>
+                    <option value="eletronicos">Eletrônicos</option>
+                    <option value="eletrodomesticos">Eletrodomésticos</option>
+                    <option value="moveis">Móveis</option>
+                    <option value="decoaracao">Decoraação</option>
+                    <option value="vestuario">Vestuário</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </div>
+
+            <div class="botao-cadastrar">
+                <input class="input-botao-cadastrar" type="submit" name="editar" value="Criar item" />
+            </div>
+
+        </form>
 
 
-                <div class="categoria">
-                    <label for="categoria">Categoria</label>
-                    <select id="categoria" name="categoria" required>
-                        <option value="eletronicos">Eletrônicos</option>
-                        <option value="eletrodomesticos">Eletrodomésticos</option>
-                        <option value="moveis">Móveis</option>
-                        <option value="decoaracao">Decoraação</option>
-                        <option value="vestuario">Vestuário</option>
-                        <option value="outros">Outros</option>
-                    </select>
-                </div>
-
-
-                <input type="submit" name="editar" class="botao-cadastrar" value="Criar item" />
-
-            </form>
-
-        </section>
-
-    </section>
+    </div>
 
 </body>
 
