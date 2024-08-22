@@ -63,58 +63,64 @@ function listavazia()
 
         <p class="msg_estoque_vazio"> <?= listavazia() ?> </p>
 
-        <?php foreach ($_SESSION['produtos'] as $key => $value) : ?>
+        <div class="scroll">
 
-            <div class="produto">
+            <?php foreach ($_SESSION['produtos'] as $key => $value) : ?>
 
-                <div class="infos_lado_direito">
+                <div class="produto">
 
-                    <div class="primeira_linha">
+                    <div class="infos_lado_direito">
 
-                        <p class="id">#00000<?= $key + 1 ?></p>
+                        <div class="primeira_linha">
 
-                        <div class="categoria<?= $value['categoria_id'] ?>">
+                            <p class="id">#00000<?= $key + 1 ?></p>
 
-                            <?= $_SESSION['categorias'][$value['categoria_id']] ?>
+                            <div class="categoria<?= $value['categoria_id'] ?>">
+
+                                <?= $_SESSION['categorias'][$value['categoria_id']] ?>
+
+                            </div>
 
                         </div>
 
-                    </div>
+                        <p><?= $value['nome'] ?></p>
 
-                    <p><?= $value['nome'] ?></p>
+                        <form action="editar.php" method="post" class="editar">
 
-                    <form action="editar.php" method="post" class="editar">
+                            <input type="hidden" name="key" value="<?= $key ?>">
 
-                        <input type="hidden" name="key" value="<?= $key ?>">
-
-                        <button type="submit">Editar</button>
-
-                    </form>
-
-                </div>
-
-                <div class="infos_lado_esquerdo">
-
-                    <p class="sku">SKU: <?= $value['sku'] ?></p>
-
-                    <p>Quantidade: <?= $value['quantidade'] ?></p>
-
-                    <div class="deletar">
-
-                        <form action="#" method="post">
-
-                            <input type="hidden" name="deletar" value="<?= $key ?>">
-
-                            <button type="submit">Deletar</button>
+                            <button type="submit">Editar</button>
 
                         </form>
 
                     </div>
 
+                    <div class="infos_lado_esquerdo">
+
+                        <p class="sku">SKU: <?= $value['sku'] ?></p>
+
+                        <p>Quantidade: <?= $value['quantidade'] ?></p>
+
+                        <div class="deletar">
+
+                            <form action="#" method="post">
+
+                                <input type="hidden" name="deletar" value="<?= $key ?>">
+
+                                <button type="submit">Deletar</button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+
+        </div>
+
     </div>
 </body>
 
