@@ -1,20 +1,30 @@
 <?php
 
+require_once '../vendor/autoload.php';
+
+use Pansiere\Crud\Produtos;
+
 session_start();
 
-if (isset($_POST['editar'])) {
+$produtos = new Produtos();
 
-    $_SESSION['produtos'][$_POST['key']] = [
-        'nome' => $_POST['nome'],
-        'sku' => $_POST['sku'],
-        'unidade_medida_id' => $_POST['udm'],
-        'valor' => $_POST['valor'],
-        'quantidade' => $_POST['quantidade'],
-        'categoria_id' => $_POST['categoria'],
-    ];
+if (isset($_SESSION['editar_key'])) {
+    $key = $_SESSION['editar_key'];
 
-    header('Location: listagem.php');
-    exit();
+    if (isset($_POST['nome'])) {
+        $produtos->atualizar(
+            $key,
+            3,
+            $_POST['nome'],
+            $_POST['sku'],
+            $_POST['udm'],
+            (float) $_POST['valor'],
+            (int) $_POST['quantidade'],
+            $_POST['categoria']
+        );
+        header('Location: listagem.php');
+        exit();
+    }
 }
 
 ?>
@@ -33,7 +43,7 @@ if (isset($_POST['editar'])) {
 
     <div class="corpo">
 
-        <h1 class="id">Editar Item #00000<?= $_POST['key'] + 1 ?></h1>
+        <h1 class="id">Editar Item #00000<?= $key + 1 ?></h1>
 
         <form class="forma" action="#" method="post">
             <input type="hidden" name="key" value="<?= $_POST['key'] ?>">
@@ -41,7 +51,7 @@ if (isset($_POST['editar'])) {
             <div class="nome_do_item">
                 <p>Nome do item</p>
 
-                <input type="text" id="nome" name="nome" value="<?= $_SESSION['produtos'][$_POST['key']]['nome'] ?>" required>
+                <input type="text" id="nome" name="nome" value="<?= $produtos->listar()[$key]['nome'] ?>" required>
 
             </div>
 
@@ -49,13 +59,13 @@ if (isset($_POST['editar'])) {
                 <div class="sku">
                     <p>SKU</p>
 
-                    <input type="text" id="sku" name="sku" value="<?= $_SESSION['produtos'][$_POST['key']]['sku'] ?>" required>
+                    <input type="text" id="sku" name="sku" value="<?= $_SESSION['produtos'][$key]['sku'] ?>" required>
                 </div>
 
                 <div class="udm">
                     <p>Unidade de Medida</p>
 
-                    <input type="text" id="udm" name="udm" value="<?= $_SESSION['unidades_medidas'][$_SESSION['produtos'][$_POST['key']]['unidade_medida_id']] ?>" required>
+                    <input type="text" id="udm" name="udm" value="<?= $_SESSION['unidades_medidas'][$produtos->listar()[$key]['unidade_medida_id']] ?>" required>
                 </div>
             </div>
 
@@ -63,13 +73,13 @@ if (isset($_POST['editar'])) {
                 <div class="valor">
                     <p>Valor</p>
 
-                    <input type="text" id="valor" name="valor" value="<?= $_SESSION['produtos'][$_POST['key']]['valor'] ?>" required>
+                    <input type="text" id="valor" name="valor" value="<?= $produtos->listar()[$key]['valor'] ?>" required>
                 </div>
 
                 <div class="quantidade">
                     <p>Quantidade Estoque</p>
 
-                    <input type="text" id="quantidade" name="quantidade" value="<?= $_SESSION['produtos'][$_POST['key']]['quantidade'] ?>" required>
+                    <input type="text" id="quantidade" name="quantidade" value="<?= $produtos->listar()[$key]['quantidade'] ?>" required>
                 </div>
             </div>
 
