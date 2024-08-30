@@ -1,30 +1,31 @@
 <?php
 
-require_once '../vendor/autoload.php';
+// require_once '../vendor/autoload.php' ;
 
-use Pansiere\Crud\Produtos;
+// use Pansiere\Crud\Produtos;
 
-session_start();
+// session_start();
 
-$produtos = new Produtos();
+// $produtos=new Produtos();
 
-if (isset($_POST["deletar_key"])) {
+// if (isset($_POST["deletar_key"])) {
 
-    $produtos->deletar($_POST['deletar_key']);
-}
+// $produtos->deletar($_POST['deletar_key']);
+// }
 
-if (isset($_POST["editar_header_key"])) {
+// if (isset($_POST["editar_header_key"])) {
 
-    $produtos->editar($_POST["editar_header_key"]);
-}
+// $produtos->editar($_POST["editar_header_key"]);
+// }
 
-function listavazia()
-{
-    if (empty($_SESSION['produtos'])) {
+// function listavazia()
+// {
+// if (empty($_SESSION['produtos'])) {
 
-        echo "Sem produtos no estoque.";
-    }
-}
+// echo "Sem produtos no estoque.";
+// }
+// }
+var_dump($produtos);
 
 ?>
 
@@ -46,11 +47,7 @@ function listavazia()
 
             <div class="botoes_novo_item">
 
-                <form action="formulario.php" method="get" class="botoes_action_novo_item">
-
-                    <button type="submit">Novo item</button>
-
-                </form>
+                <a href="/criar" class="botoes_action_novo_item" type="submit">Novo item</a>
 
             </div>
 

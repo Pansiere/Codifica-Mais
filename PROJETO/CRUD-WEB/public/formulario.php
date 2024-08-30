@@ -1,28 +1,3 @@
-<?php
-
-require_once '../vendor/autoload.php';
-
-use Pansiere\Crud\Produtos;
-
-session_start();
-
-$produtos = new Produtos();
-
-if (isset($_POST['nome'])) {
-
-    $produtos->salvar(
-        3,
-        $_POST['nome'],
-        $_POST['sku'],
-        $_POST['udm'],
-        (float) $_POST['valor'],
-        (int) $_POST['quantidade'],
-        $_POST['categoria']
-    );
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -39,7 +14,7 @@ if (isset($_POST['nome'])) {
 
         <h1>Novo Item</h1>
 
-        <form class="forma" action="#" method="post">
+        <form class="forma" action="/salvar" method="post">
 
             <div class="nome_do_item">
                 <p>Nome do item</p>
@@ -76,8 +51,8 @@ if (isset($_POST['nome'])) {
             </div>
 
             <div class="categoria">
-                <label for="categoria">Categoria</label>
-                <select name="categoria" required>
+                <label for="categoria_id">Categoria</label>
+                <select name="categoria_id" id="categoria_id" required>
                     <option value="1">Eletrônicos</option>
                     <option value="2">Eletrodomésticos</option>
                     <option value="3">Móveis</option>
