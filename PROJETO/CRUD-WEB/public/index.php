@@ -1,70 +1,41 @@
 <?php
-
 session_start();
-
 require_once '../vendor/autoload.php';
 
 use Pansiere\Crud\Produtos;
 
-$produtos = new Produtos();
-
 $uri = strtok($_SERVER['REQUEST_URI'], '?');
 $page = rtrim($uri, '/') ?: '/';
 
-$_SESSION['categorias'] = [
-    '1' => 'Eletrônicos',
-    '2' => 'Eletrodomésticos',
-    '3' => 'Móveis',
-    '4' => 'Decoração',
-    '5' => 'Vestuário',
-    '6' => 'Outros'
-];
-
-$_SESSION['unidades_medidas'] = [
-    '1' => 'Un',
-    '2' => 'Kg',
-    '3' => 'g',
-    '4' => 'L',
-    '5' => 'mm',
-    '6' => 'cm',
-    '7' => 'm',
-    '8' => 'm²',
-];
-
-$_SESSION['produtos'] = [
-    [
-        'id' => 1,
-        'nome' => 'Smartphone',
-        'sku' => '123456',
-        'unidade_medida_id' => '1',
-        'valor' => 1500.00,
-        'quantidade' => 10,
-        'categoria_id' => '1',
-    ],
-    [
-        'id' => 2,
-        'nome' => 'Geladeira',
-        'sku' => '123457',
-        'unidade_medida_id' => '2',
-        'valor' => 2500.00,
-        'quantidade' => 5,
-        'categoria_id' => '2',
-    ]
-];
+$produtos = new Produtos(
+    $pdo = new PDO(
+        'mysql:host=172.29.0.2;dbname=crud_web',
+        'root',
+        'password'
+    )
+);
 
 switch ($page) {
-    case "/listagem":
-        $produtos->listar();
-        break;
-
     case "/criar":
         $produtos->criar();
+        break;
+
+    case "/editar":
+        $produtos->editar($_POST['produto_id']);
         break;
 
     case "/salvar":
         $produtos->salvar();
         break;
 
+    case "/deletar":
+        $produtos->deletar($_POST['produto_id']);
+        break;
+
+    case "/atualizar":
+        $produtos->atualizar();
+        break;
+
     default:
-        echo "Pagina 404";
+        $produtos->listar();
 }
