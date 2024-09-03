@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 require_once '../vendor/autoload.php';
 
 use Pansiere\Crud\Produtos;
@@ -7,13 +9,7 @@ use Pansiere\Crud\Produtos;
 $uri = strtok($_SERVER['REQUEST_URI'], '?');
 $page = rtrim($uri, '/') ?: '/';
 
-$produtos = new Produtos(
-    $pdo = new PDO(
-        'mysql:host=172.29.0.2;dbname=crud_web',
-        'root',
-        'password'
-    )
-);
+$produtos = new Produtos();
 
 switch ($page) {
     case "/criar":
@@ -33,7 +29,7 @@ switch ($page) {
         break;
 
     case "/atualizar":
-        $produtos->atualizar();
+        $produtos->atualizar($_POST['produto_id']);
         break;
 
     default:

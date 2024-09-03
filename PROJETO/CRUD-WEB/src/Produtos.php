@@ -2,13 +2,17 @@
 
 namespace Pansiere\Crud;
 
+use Pansiere\Crud\CriadorDaConexao;
 use PDO;
 
 class Produtos
 {
-    public function __construct(
-        private PDO $pdo
-    ) {}
+    private $pdo;
+
+    public function __construct()
+    {
+        $this->pdo = CriadorDaConexao::createConnection();
+    }
 
     public function listar(): void
     {
@@ -21,8 +25,7 @@ class Produtos
         $sql = "SELECT produtos.*, unidades_medidas.unidade_medida, categorias.categoria
         FROM produtos
         INNER JOIN unidades_medidas ON produtos.unidade_medida_id = unidades_medidas.id
-        INNER JOIN categorias ON produtos.categoria_id = categorias.id
-        ORDER BY valor;";
+        INNER JOIN categorias ON produtos.categoria_id = categorias.id";
         $statement = $this->pdo->query($sql);
         $dados = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -57,7 +60,7 @@ class Produtos
         $produtos = $this;
         require __DIR__ . "/../public/formulario.php";
     }
-    public function atualizar(): void
+    public function atualizar($produto_id): void
     {
         $sql = "UPDATE `produtos`
             SET `nome` = ?,`sku` = ?, `valor` = ?, `quantidade` = ?, `unidade_medida_id` = ?, `categoria_id` = ?
@@ -69,7 +72,7 @@ class Produtos
         $statement->bindValue(4, $_POST['quantidade']);
         $statement->bindValue(5, $_POST['unidade_medida_id']);
         $statement->bindValue(6, $_POST['categoria_id']);
-        $statement->bindValue(7, $_POST['id']);
+        $statement->bindValue(7, $produto_id);
         $statement->execute();
 
         header("location: /");
