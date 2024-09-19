@@ -10,7 +10,7 @@ class CriadorDaConexao
     {
         try {
             $connection = new PDO(
-                'mysql:host=localhost;dbname=crud_web',
+                'mysql:host=127.0.0.1;dbname=crud_web',
                 'root',
                 'password'
             );
