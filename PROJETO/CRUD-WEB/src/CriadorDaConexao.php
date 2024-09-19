@@ -6,16 +6,20 @@ use PDO;
 
 class CriadorDaConexao
 {
-    public static function createConnection(): PDO
+    public static function createConnection()
     {
-        $connection = new PDO(
-            'mysql:host=172.29.0.2;dbname=crud_web',
-            'root',
-            'password'
-        );
-        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        try {
+            $connection = new PDO(
+                'mysql:host=localhost;dbname=crud_web',
+                'root',
+                'password'
+            );
+            $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-        return $connection;
+            return $connection;
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
     }
 }
