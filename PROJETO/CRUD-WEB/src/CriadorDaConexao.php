@@ -19,7 +19,7 @@ class CriadorDaConexao
 
             return $connection;
         } catch (\PDOException $e) {
-            echo $e->getMessage();
+            die($e->getMessage());
         }
     }
 }
