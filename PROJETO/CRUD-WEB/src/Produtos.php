@@ -42,11 +42,14 @@ class Produtos
 
     public function salvar(): void
     {
+
+        var_dump($_FILES['image']);
+        die();
         if (!empty($_FILES['image']['name'])) {
             $imagemPath = '/images/' . $_FILES['image']['name'];
             move_uploaded_file(from: $_FILES['image']['tmp_name'],  to: __DIR__ . "/../public" . $imagemPath);
         } else {
-            $imagemPath = '/images/codificamais.jpg';
+            $imagemPath = '/images/codificamais.png';
         }
 
         $sql = "INSERT INTO `produtos`(`nome`, `sku`, `valor`, `quantidade`, `unidade_medida_id`, `categoria_id`, `imagem`) VALUES (?,?,?,?,?,?,?)";

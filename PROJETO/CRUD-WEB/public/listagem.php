@@ -44,7 +44,7 @@
                         </form>
                     </div>
                     <div class="imagem">
-                        <img src="<?= $value['imagem'] ?>" width="42" height="42" />
+                        <img src="<?= $value['imagem'] ?>" width="100" height="100" />
                     </div>
                     <div class="infos_lado_esquerdo">
                         <p class="sku">SKU: <?= $value['sku'] ?></p>
