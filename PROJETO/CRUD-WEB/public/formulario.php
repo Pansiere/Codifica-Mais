@@ -14,7 +14,7 @@
             <h1><?= $produto_id ? 'Editar Item' : 'Novo Item' ?></h1>
             <a class="botoes_voltar" href="/listagem" type="submit"> VOLTAR </a>
         </div>
-        <form class="forma" action="<?= $produto_id ? '/atualizar' : '/salvar' ?>" method="post">
+        <form class="forma" action="<?= $produto_id ? '/atualizar' : '/salvar' ?>" method="POST" enctype="multipart/form-data">
             <div class="nome_do_item">
                 <p>Nome do item</p>
                 <input type="text" id="nome" name="nome" value="<?= $produto_id ? $produtos->buscarPorId($produto_id)['nome'] : '' ?>" required>
@@ -48,16 +48,21 @@
                     <input type="text" id="quantidade" name="quantidade" value="<?= $produto_id ? $produtos->buscarPorId($produto_id)['quantidade'] : '' ?>" required>
                 </div>
             </div>
-            <div class="categoria">
-                <label for="categoria_id">Categoria</label>
-                <select name="categoria_id" id="categoria_id" required>
-                    <option value="1">Eletrônicos</option>
-                    <option value="2">Eletrodomésticos</option>
-                    <option value="3">Móveis</option>
-                    <option value="4">Decoração</option>
-                    <option value="5">Vestuário</option>
-                    <option value="6">Outros</option>
-                </select>
+            <div class="categoria__e__imagem">
+                <div class="categoria">
+                    <label for="categoria_id">Categoria</label>
+                    <select name="categoria_id" id="categoria_id" required>
+                        <option value="1">Eletrônicos</option>
+                        <option value="2">Eletrodomésticos</option>
+                        <option value="3">Móveis</option>
+                        <option value="4">Decoração</option>
+                        <option value="5">Vestuário</option>
+                        <option value="6">Outros</option>
+                    </select>
+                </div>
+                <div class="imagem">
+                    <input type="file" name="image">
+                </div>
             </div>
             <div class="botao-cadastrar">
                 <input type="hidden" id="produto_id" name="produto_id" value="<?= $produto_id ? $produtos->buscarPorId($produto_id)['id'] : '' ?>">

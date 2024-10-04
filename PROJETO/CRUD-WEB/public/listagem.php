@@ -43,6 +43,9 @@
                             <button type="submit">Editar</button>
                         </form>
                     </div>
+                    <div class="imagem">
+                        <img src="<?= $value['imagem'] ?>" width="42" height="42" />
+                    </div>
                     <div class="infos_lado_esquerdo">
                         <p class="sku">SKU: <?= $value['sku'] ?></p>
                         <p>Quantidade: <?= $value['quantidade'] ?></p>

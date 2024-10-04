@@ -12,6 +12,7 @@ PRIMARY KEY (`id`));
 
 CREATE TABLE IF NOT EXISTS `crud_web`.`produtos` (
     `id` INT NOT NULL AUTO_INCREMENT,
+    `imagem` VARCHAR(255) NOT NULL,
     `nome` VARCHAR(45) NOT NULL,
     `sku` VARCHAR(45) NOT NULL, 
     `valor` DECIMAL(10,2) NOT NULL, 

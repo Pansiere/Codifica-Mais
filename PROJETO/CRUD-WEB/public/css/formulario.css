@@ -165,18 +165,43 @@ body {
   background-color: white;
 }
 
-.categoria {
-  width: 45%;
+.categoria__e__imagem {
   display: flex;
-  flex-direction: column;
   gap: 4px;
 }
 
-.categoria select {
-  width: 100%;
+.categoria__e__imagem select {
   padding: 8px;
   font-size: 14px;
   border-radius: 10px;
   border: 1px solid #000000;
   background-color: white;
 }
+
+.imagem {
+  width: 45%;
+  display: flex;
+  gap: 4px;
+}
+
+.imagem select {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #000000;
+  background-color: white;
+}
+/* 
+.imagem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 45%;
+}
+
+#imagem {
+  border-radius: 10px;
+  padding: 8px;
+  border: 1px solid black;
+  margin-bottom: 20px;
+} */
