@@ -42,18 +42,33 @@ class Produtos
 
     public function salvar(): void
     {
-
-        var_dump($_FILES['image']);
-        die();
         if (!empty($_FILES['image']['name'])) {
-            $imagemPath = '/images/' . $_FILES['image']['name'];
-            move_uploaded_file(from: $_FILES['image']['tmp_name'],  to: __DIR__ . "/../public" . $imagemPath);
+
+            $tamanhoMaximo = 2 * 1024 * 1024;
+            $imagemPath = '/storage/' . basename(path: $_FILES['image']['name']);
+
+            if (
+                $_FILES['image']['size'] == 0 ||
+                $_FILES['image']['size'] > $tamanhoMaximo ||
+                ($_FILES['image']['type'] != 'image/png' &&
+                    $_FILES['image']['type'] != 'image/jpg' &&
+                    $_FILES['image']['type'] != 'image/jpeg')
+            ) {
+                echo "
+                    <script>
+                        alert('O arquivo não pode exceder 2MB. E precisa ser uma imagem.');
+                        window.location.href = '/criar';
+                    </script>";
+                exit();
+            }
+
+            move_uploaded_file(from: $_FILES['image']['tmp_name'], to: './../public/storage/' . basename(path: $_FILES['image']['name']));
         } else {
             $imagemPath = '/images/codificamais.png';
         }
 
         $sql = "INSERT INTO `produtos`(`nome`, `sku`, `valor`, `quantidade`, `unidade_medida_id`, `categoria_id`, `imagem`) VALUES (?,?,?,?,?,?,?)";
-        $statement = $this->pdo->prepare($sql);
+        $statement = $this->pdo->prepare(query: $sql);
         $statement->bindValue(param: 1, value: $_POST['nome']);
         $statement->bindValue(param: 2, value: $_POST['sku']);
         $statement->bindValue(param: 3, value: $_POST['valor']);
@@ -63,7 +78,7 @@ class Produtos
         $statement->bindValue(param: 7, value: $imagemPath);
         $statement->execute();
 
-        header("location: /");
+        header(header: "location: /");
         exit();
     }
 
@@ -74,50 +89,111 @@ class Produtos
     }
     public function atualizar($produto_id): void
     {
+        if (!empty($_FILES['image']['name'])) {
+
+            $tamanhoMaximo = 2 * 1024 * 1024;
+
+            if (
+                $_FILES['image']['size'] == 0 ||
+                $_FILES['image']['size'] > $tamanhoMaximo ||
+                ($_FILES['image']['type'] != 'image/png' && $_FILES['image']['type'] != 'image/jpg')
+            ) {
+                echo "
+                    <script>
+                        alert('O arquivo não pode exceder 2MB. E precisa ser uma imagem.');
+                        window.location.href = '/';
+                    </script>";
+                exit();
+            }
+
+            $imagemPath = '/storage/' . basename(path: $_FILES['image']['name']);
+            move_uploaded_file(from: $_FILES['image']['tmp_name'], to: $imagemPath);
+        } else {
+            $imagemPath = '/images/codificamais.png';
+        }
+
         $sql = "UPDATE `produtos`
-            SET `nome` = ?,`sku` = ?, `valor` = ?, `quantidade` = ?, `unidade_medida_id` = ?, `categoria_id` = ?
+            SET `nome` = ?,`sku` = ?, `valor` = ?, `quantidade` = ?, `unidade_medida_id` = ?, `categoria_id` = ?, `imagem` = ?
             WHERE `produtos`.`id` = ?;";
-        $statement = $this->pdo->prepare($sql);
-        $statement->bindValue(1, $_POST['nome']);
-        $statement->bindValue(2, $_POST['sku']);
-        $statement->bindValue(3, $_POST['valor']);
-        $statement->bindValue(4, $_POST['quantidade']);
-        $statement->bindValue(5, $_POST['unidade_medida_id']);
-        $statement->bindValue(6, $_POST['categoria_id']);
-        $statement->bindValue(7, $produto_id);
+        $statement = $this->pdo->prepare(query: $sql);
+        $statement->bindValue(param: 1, value: $_POST['nome']);
+        $statement->bindValue(param: 2, value: $_POST['sku']);
+        $statement->bindValue(param: 3, value: $_POST['valor']);
+        $statement->bindValue(param: 4, value: $_POST['quantidade']);
+        $statement->bindValue(param: 5, value: $_POST['unidade_medida_id']);
+        $statement->bindValue(param: 6, value: $_POST['categoria_id']);
+        $statement->bindValue(param: 7, value: $imagemPath);
+        $statement->bindValue(param: 8, value: $produto_id);
         $statement->execute();
 
-        header("location: /");
+        header(header: "location: /");
         exit();
     }
 
     public function deletar($produto_id): void
     {
         $sql = "DELETE FROM produtos WHERE id = ?";
-        $statement = $this->pdo->prepare($sql);
-        $statement->bindValue(1, $produto_id);
+        $statement = $this->pdo->prepare(query: $sql);
+        $statement->bindValue(param: 1, value: $produto_id);
         $statement->execute();
 
-        header("location: /");
+        header(header: "location: /");
         exit();
     }
 
     public function buscarPorId($produto_id): array
     {
         $sql = "SELECT * FROM produtos WHERE id = ?";
-        $statement = $this->pdo->prepare($sql);
-        $statement->execute([$produto_id]);
+        $statement = $this->pdo->prepare(query: $sql);
+        $statement->execute(params: [$produto_id]);
 
-        return $statement->fetch(PDO::FETCH_ASSOC);
+        return $statement->fetch(mode: PDO::FETCH_ASSOC);
     }
 
     public function checarEstoque(): string
     {
         $sql = "SELECT * FROM produtos";
-        $statement = $this->pdo->prepare($sql);
+        $statement = $this->pdo->prepare(query: $sql);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return empty($result) ? "Sem produtos no estoque" : "";
+    }
+
+    public function uploadCsv(): void
+    {
+        if (isset($_FILES['csvFile']) && $_FILES['csvFile']['error'] === UPLOAD_ERR_OK) {
+            $CaminhoDiretorioTemporarioCsv = $_FILES['csvFile']['tmp_name'];
+
+            if (($stream = fopen(filename: $CaminhoDiretorioTemporarioCsv, mode: "r")) !== false) {
+
+                $query = "INSERT INTO produtos (imagem, nome, sku, valor, quantidade, unidade_medida_id, categoria_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                $stmt = $this->pdo->prepare(query: $query);
+
+                fgetcsv(stream: $stream, length: 1000, separator: ",");
+
+                while (($data = fgetcsv(stream: $stream, length: 1000, separator: ",")) !== false) {
+
+                    if (count(value: $data) < 7) {
+                        continue;
+                    }
+
+                    $stmt->execute(params: [
+                        $data[1],
+                        $data[2],
+                        $data[3],
+                        $data[4],
+                        $data[5],
+                        $data[6],
+                        $data[7],
+                    ]);
+                }
+
+                fclose(stream: $stream);
+            }
+        }
+
+        header(header: "Location: /");
+        exit();
     }
 }

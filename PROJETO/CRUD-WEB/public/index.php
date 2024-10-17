@@ -32,6 +32,10 @@ switch ($page) {
         $produtos->atualizar($_POST['produto_id']);
         break;
 
+    case "/uploadCsv":
+        $produtos->uploadCsv();
+        break;
+
     default:
         $produtos->listar();
 }
