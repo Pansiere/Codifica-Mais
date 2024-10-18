@@ -1,0 +1,53 @@
+FEITO NO EXERCICIO ATUL:
+
+    php artisan storage:link
+
+    1. cria um projeto novo:
+        laravel new exemplo-name
+
+    2. caso esteja rodando seu projeto em outra maquina:
+        sudo apt install php8.3-dom
+        composer update
+        composer install
+        php artisan key:generate
+        php artisan config:cache
+    
+    3. Siga o passo a passo no site da Tailwind para instalar o css
+        https://tailwindcss.com/docs/guides/laravel
+
+    5. cria os modelos e os migrations. O parametro -m ja cria o arquivo migrate para o DB(adicionar a configuracao da tabela no arquivo migration.php que foi gerado em app/migrations/*_create_*_table.php)(configurar o modelo app/Models/*.php. Definir as colunas que podem ser atribuídas em massa, usando a propriedade $fillable):
+        php artisan make:model Produto -m
+        php artisan make:model Categoria -m
+        php artisan make:model UnidadeMedida -m
+
+    6. faz o migrate:
+        php artisan migrate
+
+    7. criando o LAYOUT (componentes):
+        php artisan make:component layout -–view
+
+    7.1 criar as VIEWS (blade):
+        Criar os arquivos HTML(*.blade.php) em resources/views/
+        No caso desse projeto, por o HTML de:
+            'listagem' em resources/views/produtos/index.blade.php
+            'formulario' em resources/views/produtos/formulario.blade.php
+        Utilizar o VITE para estilização
+
+    8. cria o Controller para Gerenciar os Produtos, que vai lidar com as operações CRUD:
+        php artisan make:controller ProdutoController --resource
+
+    9. configurar o controller:
+        definir funcoes, return de views, etc
+
+    10. definir as Rotas:
+        no arquivo routes/web.php, adicione as rotas para o controller ProdutoController
+
+    11. Isntalar o Node JS e o npm:
+        https://nodejs.org/en/download/package-manager
+        npm install
+
+    12. iniciar o projeto: 
+        sudo php artisan serve --port 80
+
+    13. iniciar o VITE: 
+        npm run dev
